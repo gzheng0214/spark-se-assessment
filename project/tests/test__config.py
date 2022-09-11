@@ -1,4 +1,6 @@
 import unittest
+import sys, os
+sys.path.append(os.path.abspath("../../"))
 
 from flask import current_app
 from flask_testing import TestCase

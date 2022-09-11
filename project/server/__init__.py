@@ -22,6 +22,10 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
+is_prod = os.environ.get('IS_HEROKU', None)
+if is_prod:
+    os.environ['APP_SETTINGS'] = 'project.server.config.ProductionConfig'
+
 app_settings = os.getenv(
     'APP_SETTINGS',
     'project.server.config.DevelopmentConfig'

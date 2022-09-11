@@ -1,7 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 postgres_local_base = 'sqlite:///'
-postgres_heroku_url = os.environ.get('DATABASE_URL')
+postgres_heroku_url = os.environ['DATABASE_URL']
+heroku_secret = os.environ["SECRET"]
 database_name = 'diagnostic'
 
 
@@ -31,6 +32,6 @@ class TestingConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     """Production configuration."""
-    SECRET_KEY = 'diagnostic_secret'
+    SECRET_KEY = heroku_secret
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = postgres_heroku_url
